@@ -1,0 +1,29 @@
+﻿@{
+    Layout = "Layout";
+}
+@model RazaPerroPW.Models.viewmodels.PaisViewModel
+<section class="nav">
+    <h3>Razas por país</h3>
+    <nav>
+        <a href="~/Home/Index">Listado Alfabético de Razas</a>
+    </nav>
+</section>
+
+<section class="list">
+    @foreach(var pais in Model.pais)
+    {
+    <h4>@pais.NombrePais</h4>
+        @foreach(var perro in pais.perros)
+        {            
+        <ul>
+            <li>
+                <a href="~/razas/@perro.Nombre.Replace(" ","_")">
+                    <img src="~/imgs_perros/@(perro.IdRaza)_0.jpg" />
+                    @perro.Nombre
+                </a>
+            </li>
+        </ul>
+        }
+    }
+
+</section>

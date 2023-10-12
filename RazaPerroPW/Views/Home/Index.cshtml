@@ -1,0 +1,32 @@
+﻿@model RazaPerroPW.Models.viewmodels.IndexViewModel
+@{
+    Layout = "Layout";
+}
+<section class="nav">
+    <h3>ABC de Razas</h3>
+    <nav>
+        <a href="~/">Todas</a>
+        @{
+            string[] letra = {"A","B","C","D","F","G","H","J","K","L","M","P","R","S","T","W","X","Y" };
+        }
+        @foreach(var L in letra)
+        {
+        <a href="~/?letra=@L">@L</a>
+            
+        }
+        <a href="~/pais">Listado por país</a>
+    </nav>
+</section>
+<section class="list">
+@foreach (var perro in Model.perro)
+{
+    <ul>
+        <li>
+            <a href="~/razas/@perro.Nombre.Replace(" ","_")">
+                <img src="~/imgs_perros/@(perro.Id)_0.jpg" >
+                @perro.Nombre
+            </a>
+        </li>
+    </ul>
+}
+</section>
